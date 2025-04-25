@@ -1,0 +1,4 @@
+put <a>
+sleep 3
+take <(.*)>
+exit

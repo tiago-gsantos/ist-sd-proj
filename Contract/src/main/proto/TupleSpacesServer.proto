@@ -1,0 +1,44 @@
+syntax = "proto3";
+package pt.ulisboa.tecnico.tuplespaces.centralized.contract;
+
+
+message PutRequestServer {
+  string newTuple = 1;
+}
+message PutResponseServer {
+}
+
+message ReadRequestServer {
+  string searchPattern = 1;
+}
+message ReadResponseServer {
+  string result = 1;
+}
+
+message TakeRequestServer {
+  string tupleTake = 1;
+  repeated string tuplesCS = 2;
+}
+message TakeResponseServer {
+  string resultTake = 1;
+}
+
+message getTupleSpacesStateRequestServer {}
+message getTupleSpacesStateResponseServer {
+  repeated string tuple = 1;
+}
+
+message enterCriticalSectionRequest {
+  string searchPattern = 1;
+}
+message enterCriticalSectionResponse {
+  repeated string tuples = 1;
+}
+
+service TupleSpacesServer {
+  rpc putServer(PutRequestServer) returns (PutResponseServer);
+  rpc readServer(ReadRequestServer) returns (ReadResponseServer);
+  rpc takeServer(TakeRequestServer) returns (TakeResponseServer);
+  rpc getTupleSpacesStateServer(getTupleSpacesStateRequestServer) returns (getTupleSpacesStateResponseServer);
+  rpc enterCriticalSection(enterCriticalSectionRequest) returns (enterCriticalSectionResponse);
+}

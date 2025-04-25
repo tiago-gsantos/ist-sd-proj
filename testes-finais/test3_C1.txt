@@ -1,0 +1,4 @@
+sleep 3
+take <1> 10 10 10
+take <1>
+exit
